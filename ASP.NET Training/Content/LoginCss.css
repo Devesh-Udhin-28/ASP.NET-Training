@@ -1,0 +1,12 @@
+﻿.form-control-cust {
+    width: 25%;
+    /*background-color: #F5EFE6;*/
+    margin: auto;
+    display: block;
+
+    margin: 10% auto 10% auto;
+}
+
+.form-group-button {
+    margin-top: 5%;
+}

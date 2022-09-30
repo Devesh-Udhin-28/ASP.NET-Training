@@ -1,0 +1,57 @@
+﻿@{
+    @*The controller uses ViewBag to pass data to the view*@
+ViewBag.Title = "EmployeeList";
+}
+
+@*<h2>Index</h2>
+
+    <div><h1>Hello Employee Ji!</h1></div>
+
+    <body>
+        <div>
+            @ViewBag.Greeting (<b> from Index View</b>)
+        </div>
+    </body>
+*@
+
+<h2>Employee</h2>
+
+<div id="dvEmployeeDetails" class="jumbotron">
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table id="employeeDetailsTable" class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Home Phone</th>
+                <th>Email Address</th>
+                <th>Address</th>
+                <th>Address 2</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var item in ViewBag.EmployeeList)
+            {
+                <tr>
+
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.HomePhone</td>
+                    <td>@item.EmailAddress</td>
+                    <td>@item.Address</td>
+                    <td>@item.Address2</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId })
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

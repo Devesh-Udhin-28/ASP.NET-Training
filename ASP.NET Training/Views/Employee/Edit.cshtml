@@ -1,0 +1,59 @@
+﻿@model ASP.NET_Training.Models.EmployeeModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/LoginCss.css" />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    @*https://codeseven.github.io/toastr/*@
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script type="text/javascript" src="~/Scripts/UpdateScript.js"></script>
+</head>
+
+<form>
+
+    <div class="form-control-cust">
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" class="form-control" value="@Model.HomePhone"/>
+        </div>
+
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" class="form-control" value="@Model.LastName"/>
+        </div>
+
+        <div class="form-group">
+            <label for="address1">Address</label>
+            <input type="text" id="address1" class="form-control" value="@Model.Address"/>
+        </div>
+
+        <div class="form-group">
+            <label for="address2">Address2</label>
+            <input type="text" id="address2" class="form-control" value="@Model.Address2"/>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Home Phone</label>
+            <input type="text" id="phone" class="form-control" value="@Model.HomePhone"/>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="text" id="emailAddress" class="form-control" value="@Model.EmailAddress"/>
+        </div>
+
+        <div class="form-group" style="display: none">
+            <label for="empId">Employee ID</label>
+            <input id="empId" class="form-control" value="@Model.EmployeeId" />
+        </div>
+
+        <button class="form-group-button btn btn-primary" id="update">Update</button>
+
+    </div>
+
+</form>
+
