@@ -20,5 +20,10 @@ namespace ASP.NET_Training.BusinessLayer
             return EmployeeDAL.UpdateEmployee(employee);
         }
 
+        public static bool InsertEmployee(EmployeeModel employee)
+        {
+            return EmployeeDAL.InsertEmployee(employee);
+        }
+
     }
 }

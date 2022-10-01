@@ -12,30 +12,36 @@ namespace ASP.NET_Training.DataAccessLayer
     public static class EmployeeDAL
     {
 
-        public const string GetEmployeesQuery = @"SELECT [EmployeeId], [LastName], [FirstName], [HomePhone], [Address], [Address2], [EmailAddress] 
+        public const string GetEmployeesQuery = @"SELECT [EmployeeId],
+                                                         [LastName],
+                                                         [FirstName],
+                                                         [HomePhone],
+                                                         [Address],
+                                                         [Address2],
+                                                         [EmailAddress] 
                                                   FROM [dbo].[Employee]";
 
         public const string UpdateEmployeeQuery = @"UPDATE [dbo].[Employee] 
                                                     SET [FirstName] = @FirstName,
-                                                                                [LastName] = @LastName,
-                                                                                [Address] = @Address,
-                                                                                [Address2] = @Address2,
-                                                                                [HomePhone] = @HomePhone,
-                                                                                [EmailAddress] = @EmailAddress WHERE [EmployeeId] = @EmployeeId";
+                                                        [LastName] = @LastName,
+                                                        [Address] = @Address,
+                                                        [Address2] = @Address2,
+                                                        [HomePhone] = @HomePhone,
+                                                        [EmailAddress] = @EmailAddress
+                                                    WHERE [EmployeeId] = @EmployeeId";
 
-        public const string InsertEmployeeQuery = @"INSERT INTO [dbo].[Employee]
-                                                                      ([FirstName]
-                                                                      ,[LastName]
-                                                                      ,[Address]
-                                                                      ,[Address2]
-                                                                      ,[HomePhone]
-                                                                      ,[EmailAddress])
+        public const string InsertEmployeeQuery = @"INSERT INTO [dbo].[Employee] ([FirstName],
+                                                                                  [LastName],
+                                                                                  [Address],
+                                                                                  [Address2],
+                                                                                  [HomePhone],
+                                                                                  [EmailAddress])
                                                     VALUES (@FirstName,
                                                             @LastName,
                                                             @Address,
                                                             @Address2,
                                                             @HomePhone,
-                                                            @EmailAddress";
+                                                            @EmailAddress)";
 
         public static List<EmployeeModel> GetEmployees()
         {
@@ -75,7 +81,22 @@ namespace ASP.NET_Training.DataAccessLayer
                 new SqlParameter("EmployeeId", model.EmployeeId)
             };
 
-            return DatabaseCommand.UpdateData(UpdateEmployeeQuery, Updateparameters) > 0;
+            return DatabaseCommand.UpdateAndInsertData(UpdateEmployeeQuery, Updateparameters) > 0;
+        }
+
+        public static bool InsertEmployee(EmployeeModel model)
+        {
+            List<SqlParameter> Insertparameters = new List<SqlParameter>
+            {
+                new SqlParameter("FirstName", model.FirstName),
+                new SqlParameter("LastName", model.LastName),
+                new SqlParameter("Address", model.Address),
+                new SqlParameter("Address2", model.Address2),
+                new SqlParameter("HomePhone", model.HomePhone),
+                new SqlParameter("EmailAddress", model.EmailAddress),
+            };
+
+            return DatabaseCommand.UpdateAndInsertData(InsertEmployeeQuery, Insertparameters) > 0;
         }
 
     }

@@ -6,7 +6,10 @@
         return false;
     });
 
-    $("#update").click(function () {
+    $(".form-group-button").click(function () {
+        //var buttonActionType = document.getElementsByTagName("button")[0].id;
+        var buttonActionType = document.getElementsByClassName("form-group-button")[0].id;
+
         var firstName = $("#fname").val();
         var lastName = $("#lname").val();
         var address = $("#address1").val();
@@ -25,9 +28,18 @@
             EmployeeID: employeeID
         };
 
+        var myUrl;
+
+        if (buttonActionType == "update") {
+            myUrl = "/EditEmployee/UpdateEmp";
+        }
+        else if (buttonActionType == "create") {
+            myUrl = "/EditEmployee/InsertEmp";
+        }
+
         $.ajax({
             type: "POST",
-            url: "/Update/UpdateEmp",
+            url: myUrl,
             data: authObj,
             dataType: "json",
             success: function (response) {

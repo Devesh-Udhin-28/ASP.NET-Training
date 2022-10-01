@@ -32,7 +32,7 @@ namespace ASP.NET_Training.DataAccessLayer.Common
 
         }
 
-        public static int UpdateData(string query, List<SqlParameter> parameters)
+        public static int UpdateAndInsertData(string query, List<SqlParameter> parameters)
         {
             int numberOfRowsAffected = 0;
             DAL dal = new DAL();
